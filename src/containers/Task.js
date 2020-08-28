@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import Task from '../components/Task';
-import Edit from '../components/Edit';
+import { Task, Edit } from '../components';
 
 const TaskContainer = (props) => {
 

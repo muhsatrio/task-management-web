@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import TaskList from './containers/TaskList';
+import { TaskList } from './containers';
 import { Button } from 'react-bootstrap';
-import Input from './components/Input';
+import { Input } from './components';
 
 function App() {
 
