@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, Button, Badge } from 'react-bootstrap';
 
-const Task  = () => {
+const Task  = (props) => {
+
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card border={props.completed === false ? "warning" : "success"} style={{ width: '18rem' }}>
             <Card.Header>
                 Created at: 
             </Card.Header>
@@ -19,7 +20,9 @@ const Task  = () => {
               <Badge variant="primary">tag 3</Badge>{' '}
               <br/>
               <hr/>
-              <Button variant="primary">Task Done</Button>
+              { props.completed === false ? (<Button style={{ marginRight: '10px' }} variant="primary">Task Done</Button>) : null }
+              <Button onClick={props.handleShow} style={{ marginRight: '10px' }} variant="success">Edit</Button>
+              <Button variant="danger">Delete</Button>
             </Card.Body>
         </Card>
     );

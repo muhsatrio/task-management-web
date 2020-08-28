@@ -1,13 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import Card from './components/Task';
+import TaskList from './containers/TaskList';
+import { Button } from 'react-bootstrap';
+import Input from './components/Input';
 
 function App() {
+
+  const [showInput, setShowInput] = useState(false);
+
+  const handleCloseInput = () => setShowInput(false);
+  const handleShowInput = () => setShowInput(true);
+
   return (
     <div className="App">
-      <h1>Still WIP</h1>
-      <Card />
+      <h1>My Todo Task</h1>
+        <Button variant="success" onClick={handleShowInput}>Add My Task</Button>
+        <div className="taskBox" style={{ margin: "30px 0" }}>
+          <TaskList completed={false} />
+          <TaskList completed={true} />
+        </div>
+        <Input show={showInput} handleShow={handleShowInput} handleClose={handleCloseInput} />
     </div>
   );
 }
