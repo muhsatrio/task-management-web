@@ -22,7 +22,7 @@ const Input = (props) => {
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" onClick={props.handleClose}>
+              <Button variant="primary" onClick={props.handleSubmit}>
                 Submit
               </Button>
               <Button variant="secondary" onClick={props.handleClose}>

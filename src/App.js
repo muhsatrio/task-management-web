@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Input } from './components';
 import { initTask } from './store/action/task';
 import { connect } from 'react-redux';
+import db from './db';
 
 function App(props) {
 
@@ -17,6 +18,18 @@ function App(props) {
     props.initTask();
   }, []);
 
+  const handleSubmit = async () => {
+    await db.createNewDocument('efishery-task', {
+      "name": "study",
+      "description": "study online",
+      "completed": false,
+      "tags": ["math", "physics"],
+      "createdAt": "2020-06-06"
+    });
+    props.initTask();
+    setShowInput(false);
+  }
+
   return (
     <div className="App">
       <h1>My Todo Task</h1>
@@ -25,7 +38,7 @@ function App(props) {
           <TaskList completed={false} />
           <TaskList completed={true} />
         </div>
-        <Input show={showInput} handleShow={handleShowInput} handleClose={handleCloseInput} />
+        <Input show={showInput} handleSubmit={handleSubmit} handleShow={handleShowInput} handleClose={handleCloseInput} />
     </div>
   );
 }

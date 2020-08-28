@@ -15,7 +15,7 @@ const Task  = (props) => {
                 {props.data.description}
               </Card.Text>
               <hr/>
-              {props.data.tags.map(tag => (<Badge style={{marginRight: '3px'}} variant="primary">{tag}</Badge>))}
+              {props.data.tags.map((tag, i) => (<Badge key={i} style={{marginRight: '3px'}} variant="primary">{tag}</Badge>))}
               <br/>
               <hr/>
               { props.completed === false ? (<Button style={{ marginRight: '10px' }} variant="primary">Task Done</Button>) : null }
