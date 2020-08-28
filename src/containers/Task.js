@@ -10,8 +10,8 @@ const TaskContainer = (props) => {
 
     return (
         <div>
-            <Task completed={props.completed} handleShow={handleShowEdit} />
-            <Edit show={showEdit} handleShow={handleShowEdit} handleClose={handleCloseEdit} />
+            <Task data={props.data} completed={props.completed} handleShow={handleShowEdit} />
+            <Edit data={props.data} show={showEdit} handleShow={handleShowEdit} handleClose={handleCloseEdit} />
         </div>
     );
 }

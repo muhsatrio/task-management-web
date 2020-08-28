@@ -10,11 +10,11 @@ const Edit = (props) => {
             <Modal.Body>
               <Form.Group>
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Name Task" />
+                <Form.Control type="text" placeholder="Name Task" value={props.data.name} />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" placeholder="Description" />
+                <Form.Control type="text" placeholder="Description" value={props.data.description} />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Tag</Form.Label>

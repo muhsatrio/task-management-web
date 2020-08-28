@@ -10,7 +10,20 @@ export const setTask = (tasks) => {
 
 export const initTask = () => {
     return async dispatch => {
-        const response = await db.getAllDocuments('efishery_task');
-        dispatch(setTask(response.data));
+        const { data } = await db.getAllDocuments('efishery_task');
+        let { rows } = data;
+        for (let i = 0; i < rows.length; i++) {
+            const result = await db.getDocumentsByID('efishery_task', rows[i].id);
+            const { name, description, completed, tags, createdAt } = result.data;
+            rows[i] = {
+                ...rows[i],
+                name,
+                description,
+                completed,
+                tags,
+                createdAt
+            };
+        }
+        dispatch(setTask(rows));
     }
 }

@@ -1,25 +1,33 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import Task from './Task';
+import { Spinner } from '../components';
+import { connect } from 'react-redux';
 
 const TaskList = (props) => {
-    return (
-        <div className="TaskList" style={{ margin: "0 50px" }}>
-            {props.completed === true ? <h4>Completed</h4> : <h4>On Progress</h4>}
-            <Row style={{ margin: "30px 0" }}>
-                <Task completed={props.completed} />
-            </Row>
-            <Row style={{ margin: "30px 0" }}>
-                <Task completed={props.completed} />
-            </Row>
-            <Row style={{ margin: "30px 0" }}>
-                <Task completed={props.completed} />
-            </Row>
-            <Row style={{ margin: "30px 0" }}>
-                <Task completed={props.completed} />
-            </Row>
-        </div>
-    );
+
+    let page = <Spinner />
+
+    if (props.tasks) {
+        page = (
+            <div className="TaskList" style={{ margin: "0 50px" }}>
+                {props.completed === true ? <h4>Completed</h4> : <h4>On Progress</h4>}
+                { props.tasks.filter(task => task.completed === props.completed).map(eachTask => (
+                    <Row style={{ margin: "30px 0" }}>
+                        <Task data={eachTask} completed={props.completed} />
+                    </Row>
+                ) ) }
+            </div>
+        )
+    }
+
+    return page;
 }
 
-export default TaskList;
+const mapStateToProps = state => {
+    return {
+        tasks: state.tasks
+    }
+}
+
+export default connect(mapStateToProps)(TaskList);

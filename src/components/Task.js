@@ -6,18 +6,16 @@ const Task  = (props) => {
     return (
         <Card border={props.completed === false ? "warning" : "success"} style={{ width: '18rem' }}>
             <Card.Header>
-                Created at: 
+                Created at: {props.data.createdAt}
             </Card.Header>
             <Card.Body>
-              <Card.Title>Judul</Card.Title>
+              <Card.Title>{props.data.name}</Card.Title>
               <hr/>
               <Card.Text>
-                Deskripsi
+                {props.data.description}
               </Card.Text>
               <hr/>
-              <Badge variant="primary">tag 1</Badge>{' '}
-              <Badge variant="primary">tag 2</Badge>{' '}
-              <Badge variant="primary">tag 3</Badge>{' '}
+              {props.data.tags.map(tag => (<Badge style={{marginRight: '3px'}} variant="primary">{tag}</Badge>))}
               <br/>
               <hr/>
               { props.completed === false ? (<Button style={{ marginRight: '10px' }} variant="primary">Task Done</Button>) : null }

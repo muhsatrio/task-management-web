@@ -17,10 +17,6 @@ function App(props) {
     props.initTask();
   }, []);
 
-  if (props.tasks) {
-    console.log(props.tasks);
-  }
-
   return (
     <div className="App">
       <h1>My Todo Task</h1>
@@ -34,16 +30,10 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    tasks: state.tasks
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     initTask: () => dispatch(initTask())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
