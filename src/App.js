@@ -1,15 +1,25 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { TaskList } from './containers';
 import { Button } from 'react-bootstrap';
 import { Input } from './components';
+import { initTask } from './store/action/task';
+import { connect } from 'react-redux';
 
-function App() {
+function App(props) {
 
   const [showInput, setShowInput] = useState(false);
 
   const handleCloseInput = () => setShowInput(false);
   const handleShowInput = () => setShowInput(true);
+
+  useEffect(() => {
+    props.initTask();
+  }, []);
+
+  if (props.tasks) {
+    console.log(props.tasks);
+  }
 
   return (
     <div className="App">
@@ -24,4 +34,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    tasks: state.tasks
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    initTask: () => dispatch(initTask())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const instance = axios.create({
-    baseURL: 'http://admin:iniadmin@13.250.43.79:5984/'
+    baseURL: `http://${process.env.USER}:${process.env.PASSWORD}@13.250.43.79:5984/`
 });
 
 const db = {
