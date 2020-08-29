@@ -10,15 +10,18 @@ const Input = (props) => {
             <Modal.Body>
               <Form.Group>
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Name Task" />
+                <Form.Control type="text" placeholder="Name Task" value={props.data.name} onChange={e => props.setData.setName(e.target.value)} />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" placeholder="Description" />
+                <Form.Control type="text" placeholder="Description" value={props.data.description} onChange={e => props.setData.setDescription(e.target.value)} />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Tag</Form.Label>
-                <Form.Control type="text" placeholder="Tag" />
+                <Form.Control type="text" placeholder="Tag" value={props.data.tagBox} onChange={e => props.setData.setTagBox(e.target.value)} onKeyPress={e => (e.key === 'Enter' ? props.handleAddTag() : null )} />
+              </Form.Group>
+              <Form.Group>
+                {props.data.tagList.map((eachTag, i) => ( <Button style={{ marginRight: "3px" }} onClick={() => props.handleDeleteTag(eachTag.id)} key={i} variant="primary">{eachTag.value}</Button> ))}
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>

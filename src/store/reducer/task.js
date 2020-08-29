@@ -1,7 +1,7 @@
-import { SET_TASK } from '../action/actionTypes';
+import { SET_TASK} from '../action/actionTypes';
 
 const initialState = {
-    tasks: null
+    tasks: null,
 };
 
 const reducer = (state = initialState, action) => {
