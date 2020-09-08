@@ -2,12 +2,14 @@
 
 1. Make sure database `efishery_task` has been created on CouchDB
 
-2. Add `.env` file in root directory with format below
+2. Make sure `Docker` and `Docker Compose` has been installed
+
+3. Add `.env` file in root directory with format below
 ```
 USER_DB={your username db}
 PASSWORD_DB={your password db}
 ```
 
 ### How to Run
-1. Install the package with `npm install`
-2. Run the development server with `npm start`
+
+Run the applicaction with type `docker-compose up --build``
