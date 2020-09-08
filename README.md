@@ -12,4 +12,4 @@ PASSWORD_DB={your password db}
 
 ### How to Run
 
-Run the applicaction with type `docker-compose up --build``
+Run the applicaction with type `docker-compose up --build`
