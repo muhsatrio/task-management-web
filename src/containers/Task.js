@@ -47,7 +47,7 @@ const TaskContainer = (props) => {
     const handleDelete = async (id, rev) => {
         const confirmation = window.confirm("Are you sure to delete this data?");
         if (confirmation === true) {
-            await axios.delete(`/efishery_task/${id}?rev=${rev}`);
+            await axios.delete(`/${process.env.DB_NAME}/${id}?rev=${rev}`);
             props.initTask();
         }
     }
@@ -55,7 +55,7 @@ const TaskContainer = (props) => {
     const handleEdit = async (id, rev, data) => {
         const confirmation = window.confirm("Are you sure to change this task?");
         if (confirmation === true) {
-            axios.put(`/efishery_task/${id}?rev=${rev}`, {
+            axios.put(`/${process.env.DB_NAME}/${id}?rev=${rev}`, {
                 ...props.data,
                 ...data
             }).then(response => {

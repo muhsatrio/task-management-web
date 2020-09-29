@@ -39,7 +39,7 @@ function App(props) {
 
   const handleSubmit = async () => {
     if (name.length>0 && description.length>0) {
-      await axios.post('/efishery_task', {
+      await axios.post(`/${process.env.DB_NAME}`, {
         name,
         description,
         completed: false,

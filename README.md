@@ -1,13 +1,15 @@
 ### Pre-step
 
-1. Make sure database `efishery_task` has been created on CouchDB
+1. Make sure CouchDB server has been installed and run
 
 2. Make sure `Docker` and `Docker Compose` has been installed
 
 3. Add `.env` file in root directory with format below
 ```
-USER_DB={your username db}
-PASSWORD_DB={your password db}
+DB_USER={your username db}
+DB_PASSWORD={your password db}
+DB_HOST={your host db}
+DB_NAME={your db name}
 ```
 
 ### How to Run

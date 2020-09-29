@@ -17,13 +17,13 @@ export const getTask = (id) => {
 
 export const initTask = () => {
     return async dispatch => {
-        const { data, status } = await axios.get('/efishery_task/_all_docs');
+        const { data, status } = await axios.get(`/${process.env.DB_NAME}/_all_docs`);
         // console.log(data);
         if (status===200) {
             let { rows } = data;
             for (let i = 0; i < rows.length; i++) {
                 console.log(rows[i]);
-                const result = await axios.get(`/efishery_task/${rows[i].id}`);
+                const result = await axios.get(`/${process.env.DB_NAME}/${rows[i].id}`);
                 const { name, description, completed, tags, createdAt } = result.data;
                 rows[i] = {
                     ...rows[i],
